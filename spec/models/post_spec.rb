@@ -4,24 +4,26 @@ RSpec.describe Post, :type => :model do
   before do
     @post = Post.new(satisfied: true, text: 'Great flight! #milehighclub',
                      user_id: 1, flight_id: 1)
+    @post.flight = Flight.new
+    @post.user = User.new
   end
 
   subject(:post){ @post }
 
-  it { is_expected.to respond_to(:flight_id) }
-  it { is_expected.to respond_to(:user_id) }
+  it { is_expected.to respond_to(:flight) }
+  it { is_expected.to respond_to(:user) }
   it { is_expected.to respond_to(:satisfied) }
   it { is_expected.to respond_to(:text) }
 
   it { is_expected.to be_valid }
 
-  describe "when flight_id is not present" do
-    before {@post.flight_id = ''}
+  describe "when flight is not present" do
+    before {@post.flight = nil}
     it { is_expected.to_not be_valid }
   end
 
   describe "when user_id is not present" do
-    before {@post.user_id = ''}
+    before {@post.user = nil}
     it { is_expected.to_not be_valid }
   end
 
