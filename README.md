@@ -20,3 +20,6 @@ Andrew Adams
 Jonathan Young
 Max Diener
 Tim Howard
+
+##Codeship
+[ ![Codeship Status for mvdiener/p3_5day](https://codeship.io/projects/30ebfb30-ffcb-0131-7895-0aeb6fd0d794/status)](https://codeship.io/projects/29780)
