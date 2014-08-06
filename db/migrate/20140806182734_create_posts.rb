@@ -3,7 +3,7 @@ class CreatePosts < ActiveRecord::Migration
     create_table :posts do |t|
       t.integer :user_id
       t.integer :flight_id
-      t.boolean :satisfaction
+      t.boolean :satisfied
       t.text :text
 
       t.timestamps
