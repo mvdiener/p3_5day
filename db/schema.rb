@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20140806182856) do
   create_table "posts", force: true do |t|
     t.integer  "user_id"
     t.integer  "flight_id"
-    t.boolean  "satisfaction"
+    t.boolean  "satisfied"
     t.text     "text"
     t.datetime "created_at"
     t.datetime "updated_at"
