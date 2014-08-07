@@ -23,6 +23,8 @@ ActiveRecord::Schema.define(version: 20140807161425) do
     t.datetime "updated_at"
   end
 
+  add_index "airlines", ["fs_code"], name: "index_airlines_on_fs_code", unique: true, using: :btree
+
   create_table "airports", force: true do |t|
     t.string   "name"
     t.string   "fs_code"
@@ -35,12 +37,12 @@ ActiveRecord::Schema.define(version: 20140807161425) do
 
   create_table "flights", force: true do |t|
     t.integer  "airline_id"
+    t.integer  "departure_airport_id"
+    t.integer  "arrival_airport_id"
     t.datetime "departure_scheduled"
     t.datetime "departure_actual"
     t.datetime "arrival_scheduled"
     t.datetime "arrival_actual"
-    t.integer  "departure_airport_id"
-    t.integer  "arrival_airport_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
