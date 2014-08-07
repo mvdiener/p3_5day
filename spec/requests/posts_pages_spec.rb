@@ -4,7 +4,7 @@ describe "Post pages" do
 
 	subject { page }
 
-	describe "signup page" do
+	pending "signup page" do
 		before { visit root_path }
 
 		it { should have_content('Sign up')}
