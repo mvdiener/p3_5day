@@ -23,6 +23,8 @@ ActiveRecord::Schema.define(version: 20140807161425) do
     t.datetime "updated_at"
   end
 
+  add_index "airlines", ["fs_code"], name: "index_airlines_on_fs_code", unique: true, using: :btree
+
   create_table "airports", force: true do |t|
     t.string   "name"
     t.string   "fs_code"
