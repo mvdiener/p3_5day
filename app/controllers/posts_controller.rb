@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
 	def index
+    current_user
     @posts = Post.all
 	end
 
@@ -12,10 +13,6 @@ class PostsController < ApplicationController
   end
 
   def destroy
-  end
-
-  def home
-    @post = Post.new
   end
 
   private
