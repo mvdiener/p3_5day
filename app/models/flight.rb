@@ -1,25 +1,18 @@
 class Flight < ActiveRecord::Base
 	# before_create :check_time
 	belongs_to :airline
+	belongs_to :departure_airport, class_name: 'Airport'
+	belongs_to :arrival_airport, class_name: 'Airport'
 	has_many :posts
 
-	validates :airline, :departure_scheduled, :departure_actual, :arrival_scheduled, :arrival_actual, :departure_city, :arrival_city, presence: true
+	validates :airline, :departure_scheduled, :departure_actual, :arrival_scheduled, :arrival_actual, :departure_airport, :arrival_airport, presence: true
 
-	validate :depart_cant_be_arrival, :time_constraints
+	validate :depart_cant_be_arrival
 
 	def depart_cant_be_arrival
-		if arrival_city == departure_city
-			errors.add(:wrong_departure, "can't be in same city")
+		if arrival_airport == departure_airport
+			errors.add(:arrival_airport, "can't be in same city as departure airport")
 		end
 	end
-
-	def time_constraints
-		if arrival_actual && departure_actual
-			if (arrival_actual <= departure_actual)
-				errors.add(:bad_time, "arrival can't be earlier than departure")
-			end
-		end
-	end
-
 
 end
