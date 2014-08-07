@@ -9,6 +9,9 @@ class PostsController < ApplicationController
   def destroy
   end
 
+  def home
+  end
+
   private
 
   def post_params
