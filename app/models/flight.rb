@@ -14,8 +14,10 @@ class Flight < ActiveRecord::Base
 	end
 
 	def time_constraints
-		if (arrival_actual <= departure_actual)
-			errors.add(:bad_time, "arrival can't be earlier than departure")
+		if arrival_actual && departure_actual
+			if (arrival_actual <= departure_actual)
+				errors.add(:bad_time, "arrival can't be earlier than departure")
+			end
 		end
 	end
 
