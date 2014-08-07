@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   resources :users, :posts
   resources :sessions, only: [:new, :create, :destroy]
   root 'posts#index'
