@@ -1,0 +1,5 @@
+<%= form_for @post do |f| %>
+  <%= f.text_area :text, placeholder: "Write a post here" %>
+  <%= f.select :satisfaction, [['Yes',true],['No',false]] %>
+  <%= f.submit "Flit It!" %>
+<% end %>
