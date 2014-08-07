@@ -16,7 +16,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:text, :satisfied)
+    params.require(:post).permit(:text, :satisfied, flight: Flight.new)
   end
 
 end
