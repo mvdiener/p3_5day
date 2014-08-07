@@ -1,5 +1,9 @@
-<%= form_for @post do |f| %>
-  <%= f.text_area :text, placeholder: "Write a post here" %>
-  <%= f.select :satisfaction, [['Yes',true],['No',false]] %>
-  <%= f.submit "Flit It!" %>
+<%= form_for :post, url: posts_path do |f| %>
+  
+  Enter your Flit: <%= f.text_area :text, placeholder: "Write a post here" %><hr><br>
+  
+  Were you satisfied? <%= f.select :satisfied, [['Yes',true],['No',false]] %><hr><br>
+  
+  <%= f.submit "Flit It!" %> 
+  
 <% end %>
