@@ -3,13 +3,14 @@ class PostsController < ApplicationController
 	end
 
   def create
-    @post = Post.new(post_params)
+    @post = Post.create(post_params)
   end
 
   def destroy
   end
 
   def home
+    @post = Post.new
   end
 
   private
