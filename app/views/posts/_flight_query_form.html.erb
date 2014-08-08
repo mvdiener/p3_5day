@@ -1,4 +1,4 @@
-<%= form_tag flight_api_path do %>
+<%= form_tag flight_api_path, id: "flight_api_form" do %>
   
   <%= label_tag (:departing), "Enter your departing airport:" %>
   <%= text_field_tag (:departing) %><hr><br>
@@ -11,3 +11,4 @@
   <%= submit_tag "Flind It!" %> 
   
 <% end %>
+
