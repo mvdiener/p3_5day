@@ -1,9 +1,6 @@
 class Post < ActiveRecord::Base
+  validates :flight, :user, :text, :satisfied, presence: :true
+  validates :text, length: { maximum: 140}
   belongs_to :user
   belongs_to :flight
-
-  validates :satisfied, inclusion: {in: [true, false]}
-  validates :text, presence: true, length: { maximum: 140 }
-  validates :user, presence: true
-  validates :flight, presence: true
 end

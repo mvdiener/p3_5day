@@ -11,61 +11,46 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140807161425) do
+ActiveRecord::Schema.define(version: 20140808151647) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "airlines", force: true do |t|
-    t.string   "name"
-    t.string   "fs_code"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string "name"
   end
 
-  add_index "airlines", ["fs_code"], name: "index_airlines_on_fs_code", unique: true, using: :btree
-
   create_table "airports", force: true do |t|
-    t.string   "name"
-    t.string   "fs_code"
-    t.string   "city"
-    t.string   "state"
-    t.string   "country"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string "name"
+    t.string "fs_code"
+    t.string "city"
+    t.string "state"
+    t.string "country"
   end
 
   create_table "flights", force: true do |t|
     t.integer  "airline_id"
-    t.integer  "departure_airport_id"
     t.integer  "arrival_airport_id"
+    t.integer  "departure_airport_id"
     t.datetime "departure_scheduled"
     t.datetime "departure_actual"
     t.datetime "arrival_scheduled"
     t.datetime "arrival_actual"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "posts", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "flight_id"
-    t.boolean  "satisfied"
-    t.text     "text"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer "user_id"
+    t.integer "flight_id"
+    t.boolean "satisfied"
+    t.string  "text"
   end
-
-  add_index "posts", ["user_id", "created_at"], name: "index_posts_on_user_id_and_created_at", using: :btree
 
   create_table "users", force: true do |t|
-    t.string   "username"
-    t.string   "email"
-    t.string   "password_digest"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string "username"
+    t.string "email"
+    t.string "password"
+    t.string "password_digest"
+    t.string "password_confirmation"
   end
-
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
 end
