@@ -1,35 +1,34 @@
-<% provide(:title, "Login in") %>
+<% provide(:title, "Log in") %>
 <h1>Log in</h1>
 
 
   <%= form_for(:session, url: sessions_path, method: 'POST') do |f| %>
 
-		<form>
-			<div class="row">
-				<div class="small-8">
-					<div class="small-3 columns">
-			    	<label for="right-label" class="right"><%= f.label :email %> </label>
-			   	</div>
-			   	<div class="small-9 columns">
-			   		<%= f.text_field :email %>
-			   	</div>
-			  </div>
+		<div class="row">
+			<div class="small-8">
+				<div class="small-3 columns">
+		    	<label for="right-label" class="right"><%= f.label :email %> </label>
+		   	</div>
+		   	<div class="small-9 columns">
+		   		<%= f.text_field :email %>
+		   	</div>
 		  </div>
-	  </form>
+	  </div>
 
 
-		<form>
-			<div class="row">
-				<div class="small-8">
-					<div class="small-3 columns">
-			    	<label for="right-label" class="right"><%= f.label :password %> </label>
-			   	</div>
-			   	<div class="small-9 columns">
-			   		<%= f.password_field :password %>
-			   	</div>
-			  </div>
+
+
+		<div class="row">
+			<div class="small-8">
+				<div class="small-3 columns">
+		    	<label for="right-label" class="right"><%= f.label :password %> </label>
+		   	</div>
+		   	<div class="small-9 columns">
+		   		<%= f.password_field :password %>
+		   	</div>
 		  </div>
-	  </form>
+	  </div>
+	  
 
 		<div class="row collapse">
 			<div class="small-9 small-offset-3 columns">
