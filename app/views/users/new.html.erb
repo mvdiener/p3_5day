@@ -1,19 +1,77 @@
-<% provide(:title, 'Sign up') %>
-<h1>Sign Up</h1>
+	<% provide(:title, 'Sign up') %>
+<center>
+			<div class="row">
+				<div class="small-6">
+					<div class="small-5 columns">
+			   	</div>
+			   	<div class="small-10 columns">
+			   		<h1>Sign Up</h1>
+			   	</div>
+			  </div>
+		  </div>
 
-	<%= form_for(@user) do |f| %>
+		<%= form_for(@user) do |f| %>
 
-		<%= f.label :username %>
-		<%= f.text_field :username %>
 
-		<%= f.label :email %>
-		<%= f.text_field :email %>
+			<div class="row">
+				<div class="small-6">
+					<div class="small-3 columns">
+			    	<label for="right-label" class="right"><%= f.label :username %> </label>
+			   	</div>
+			   	<div class="small-9 columns">
+			   		<%= f.text_field :username %>
+			   	</div>
+			  </div>
+		  </div>
 
-		<%= f.label :password %>
-		<%= f.password_field :password %>
+			<div class="row">
+				<div class="small-6">
+					<div class="small-3 columns">
+			    	<label for="right-label" class="right"><%= f.label :email %> </label>
+			   	</div>
+			   	<div class="small-9 columns">
+			   		<%= f.text_field :email %>
+			   	</div>
+			  </div>
+		  </div>
 
-		<%= f.label :password_confirmation, "Confirmation" %>
-		<%= f.password_field :password_confirmation %>		
+			<div class="row">
+				<div class="small-6">
+					<div class="small-3 columns">
+			    	<label for="right-label" class="right"><%= f.label :password %> </label>
+			   	</div>
+			   	<div class="small-9 columns">
+			   		<%= f.password_field :password %>
+			   	</div>
+			  </div>
+		  </div>
 
-		<%= f.submit "Create my account" %>
-<% end %>
+			<div class="row">
+				<div class="small-6">
+					<div class="small-3 columns">
+			    	<label for="right-label" class="right"><%= f.label :password_confirmation %> </label>
+			   	</div>
+			   	<div class="small-9 columns">
+			   		<%= f.password_field :password_confirmation %>
+			   	</div>
+			  </div>
+		  </div>
+
+			<div class="row">
+				<div class="small-6">
+					<div class="small-3 columns">
+			    	<label for="right-label" class="right"><%= f.label :password_confirmation %> </label>
+			   	</div>
+			   	<div class="small-9 columns">
+			   		<%= f.password_field :password_confirmation %>
+			   	</div>
+			  </div>
+		  </div>
+			
+			<div class="row collapse">
+				<div class="small-9 small-offset-2 columns">
+					<%= f.submit "Create my account", class: 'button' %>
+		    </div>
+		  </div>
+	<% end %>
+</center>
