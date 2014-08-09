@@ -1,18 +1,12 @@
 <% posts.each do |post| %>
 
-<div class = "fleet_top">
-		<div id = "left">
-			User: <%= link_to "#{post.user.username}", posts_path %>
-		</div>
+<div class = "fleet">
 		
-		<div id = "right">
-			Flight: <%= link_to "#{post.flight.airline.name} Flight #{post.flight.flight_number}", flight_path(post.flight.id) %>
-		</div>
+	User: <%= link_to "#{post.user.username}", user_path(post.user.id) %>
+	Flight: <%= link_to "#{post.flight.airline.name} Flight #{post.flight.flight_number}", flight_path(post.flight.id) %>
+	<%=post.text%>
+		
 </div>
-
-		<div id = "fleet_body">
-			<%=post.text%>
-		</div>
 
 
 
