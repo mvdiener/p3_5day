@@ -3,7 +3,7 @@
   <%= f.select :flight, @flights %><br>
   <%= f.text_area :text, placeholder: "Write a post here" %><br>
   
-  <%= label_tag(:satisfied, "Were you satisfied?") %>
+  <%= label_tag(:satisfied, "Satisfied?") %>
   <%= f.select :satisfied, [['Yes',true],['No',false]] %><br>
   
   <%= f.submit "Flit It!" %> 
