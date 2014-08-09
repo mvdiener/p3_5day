@@ -8,7 +8,7 @@ class FlightApiController < ApplicationController
 
 	FLIGHT_QUERY_URL_START = "https://api.flightstats.com/flex/flightstatus/rest/v2/json/route/status"
 	CREDENTIALS = "?appId=#{ENV['FS_ID']}&appKey=#{ENV['FS_KEY']}"
-	FLIGHT_QUERY_URL_END = "&hourOfDay=0&numHours=24&utc=false&maxFlights=10"
+	FLIGHT_QUERY_URL_END = "&hourOfDay=0&numHours=24&utc=false"
 
 	def create
 		split_date = params[:date].split("-")
@@ -17,6 +17,7 @@ class FlightApiController < ApplicationController
 		@post = Post.new
 		@flights = parse_flights(result)
 		@flights.map!{|flight| create_option(flight)}
+		@flights.sort!
 		render 'posts/_create_post_form', layout: false
 	end
 
@@ -44,6 +45,7 @@ class FlightApiController < ApplicationController
 					new_flight.departure_scheduled = flight['operationalTimes']['scheduledGateDeparture']['dateLocal']
 					new_flight.departure_actual = flight['operationalTimes']['actualGateDeparture']['dateLocal']
 					new_flight.fs_code = flight['flightId']
+					new_flight.flight_number = flight['flightNumber']
 					new_flight.save
 				end
 				selectable_flights << new_flight
@@ -63,7 +65,7 @@ class FlightApiController < ApplicationController
 		end
 
 		def create_option(flight)
-			["Departed #{flight.departure_airport.fs_code} at #{time_to_s(flight.departure_actual)} - Arrived #{flight.arrival_airport.fs_code} at #{time_to_s(flight.arrival_actual)}", flight.id]
+			["#{flight.airline.name} Flight #{flight.flight_number} (Arrived #{time_to_s(flight.arrival_actual)})", flight.id]
 		end
 
 		def time_to_s(time)

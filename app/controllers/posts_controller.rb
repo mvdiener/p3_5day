@@ -6,7 +6,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    @post.flight = Flight.new
+    @post.flight = Flight.find(params[:post][:flight])
     @post.user = current_user
     @post.save
     redirect_to posts_path

@@ -21,4 +21,12 @@ class Flight < ActiveRecord::Base
 		end
 	end
 
+	def flight_times_to_s(flight)
+		["Departed #{flight.departure_airport.fs_code} at #{time_to_s(flight.departure_actual)} - Arrived #{flight.arrival_airport.fs_code} at #{time_to_s(flight.arrival_actual)}", flight.id]
+	end
+
+	def time_to_s(time)
+		time.strftime("%I:%M %p")
+	end
+
 end

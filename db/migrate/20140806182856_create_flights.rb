@@ -5,6 +5,7 @@ class CreateFlights < ActiveRecord::Migration
       t.integer :departure_airport_id
       t.integer :arrival_airport_id
       t.integer :fs_code
+      t.string :flight_number
       t.datetime :departure_scheduled
       t.datetime :departure_actual
       t.datetime :arrival_scheduled

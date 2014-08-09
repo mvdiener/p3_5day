@@ -1,14 +1,25 @@
 <h1> Homepage to Flitter </h1>
+<h3> This is a subtitle </h3>
+
+<% if @current_user %>
+	<div id="post-form">
+	</div>
+
+	<div id="query-form">
+		<%= render :partial => 'flight_query_form' %>
+	</div>
+<% end %>
 
 <% @posts.each do |post| %>
 <ul>
-	<li><%=post.text%></li>
+	<li>
+		<%=post.text%>
+		<ul>
+			<li>Departed: <%= post.flight.departure_airport.name %> (<%= post.flight.departure_airport.fs_code %>)
+			<li>Arrived: <%= post.flight.arrival_airport.name %> (<%= post.flight.arrival_airport.fs_code %>)
+			<li><%= post.flight.airline.name %>	Flight <%= post.flight.flight_number %>
+		</ul>
+	</li>
+
 </ul>
 <% end %>
-
-<div id="post-form">
-</div>
-
-<div id="query-form">
-	<%= render :partial => 'flight_query_form' %>
-</div>
