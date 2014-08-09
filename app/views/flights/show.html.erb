@@ -1,5 +1,8 @@
 <h1><%= @flight.airline.name + ' Flight ' + @flight.flight_number %></h1>
 <ul>
   <li><%= @flight.departure_airport.name %> (<%= @flight.departure_airport.fs_code %>) to <%= @flight.arrival_airport.name %> (<%= @flight.arrival_airport.fs_code %>)
+  	<li><%= @flight.satisfied_percent %>% satisfaction with this flight
+		<li>Departed: <%= @flight.time_to_s(@flight.departure_actual) %> - <%= @flight.departure_difference %>
+		<li>Arrived: <%= @flight.time_to_s(@flight.arrival_actual) %> - <%= @flight.arrival_difference %>
 </ul>
 <%= render partial: 'layouts/fleet', locals: {posts: @posts} %>

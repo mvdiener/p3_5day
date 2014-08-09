@@ -25,12 +25,29 @@ class Flight < ActiveRecord::Base
 		end
 	end
 
-	def flight_times_to_s(flight)
-		["Departed #{flight.departure_airport.fs_code} at #{time_to_s(flight.departure_actual)} - Arrived #{flight.arrival_airport.fs_code} at #{time_to_s(flight.arrival_actual)}", flight.id]
-	end
-
 	def time_to_s(time)
 		time.strftime("%I:%M %p")
+	end
+
+	def difference_to_s(time)
+		on_time = time < 0 ? 'Early by ' : 'Delayed by '
+		hours = (time.abs / 3600).to_i
+		minutes = ((time.abs/60) - (hours * 60)).to_i
+		on_time + "#{hours} hour(s) and #{minutes} minute(s)"
+	end
+
+	def satisfied_percent
+		total = self.posts.count
+		satisfied = self.posts.select{|post| post.satisfied}
+		satisfied.length/total.to_f * 100
+	end
+
+	def arrival_difference
+		difference_to_s(self.arrival_actual - self.arrival_scheduled)
+	end
+
+	def departure_difference
+		difference_to_s(self.departure_actual - self.departure_scheduled)
 	end
 
 	def self.api_query(args)
