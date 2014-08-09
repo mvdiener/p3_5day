@@ -4,8 +4,19 @@
   <%= f.text_area :text, placeholder: "Write a post here" %><br>
   
   <%= label_tag(:satisfied, "Satisfied?") %>
-  <%= f.select :satisfied, [['Yes',true],['No',false]] %><br>
+
+
+
+  <label>
+  	<input type = "radio" name = "satisfied" value = true>
+  	<img src="/assets/thumbs-up.png">
+  </label>
+
+  <label>
+  	<input type = "radio" name = "satisfied" value = false>
+  	<img src="/assets/thumbs-down.png">
+  </label>
   
   <%= f.submit "Flit It!" %> 
-  
+
 <% end %>
