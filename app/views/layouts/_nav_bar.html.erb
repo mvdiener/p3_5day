@@ -1,20 +1,19 @@
-<div class="nav_bar contain-to-grid sticky">
-	<nav class="top-bar" data-topbar data-options="sticky_on: large">
-		<ul class="title-area">	
-			<li class="name">
-				<h1><a href="#">Flitter</a></h1>
-			 </li>
-		 </ul>
-		 <section class="top-bar-section">
-			<!-- Right Nav Section -->
-			<ul class="right">
-				<% if @current_user %>
-					<li class="active"><%= link_to 'Log Out', logout_path, method: "DELETE" %></li>
-				<% else %>
-					<li class="active"><%= link_to 'Sign Up', new_user_path %></li>
-					<li class="active"><%= link_to 'Log In', login_path %></li>
-				<% end %>
-			</ul>
-		 </section>
-	 </nav>
-</div>
+<nav class="top-bar" data-topbar>
+	<ul class="title-area">	
+		<li class="name">
+			<h1><a href="#">Flitter</a></h1>
+		 </li>
+	 </ul>
+	 <section class="top-bar-section">
+		<!-- Right Nav Section -->
+		<ul class="right">
+			<% if @current_user %>
+				<li><%= link_to 'My Account', user_path(@current_user.id) %></li>
+				<li><%= link_to 'Log Out', logout_path, method: "DELETE" %></li>
+			<% else %>
+				<li><%= link_to 'Sign Up', new_user_path %></li>
+				<li><%= link_to 'Log In', login_path %></li>
+			<% end %>
+		</ul>
+	 </section>
+</nav>

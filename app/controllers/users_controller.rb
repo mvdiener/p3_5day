@@ -23,6 +23,16 @@ class UsersController < ApplicationController
 		end
 	end
 
+	def show
+		current_user
+		unless User.exists?(id: params[:id])
+			redirect_to root_path
+		else 
+			@user = User.find(params[:id])
+			@posts = @user.posts.reverse
+		end
+	end
+
 	private
 
 	   def user_params
