@@ -1,8 +1,10 @@
-<%= form_for :post, url: posts_path do |f| %>
+<%= form_for @post, url: posts_path do |f| %>
   
-  Enter your Flit: <%= f.text_area :text, placeholder: "Write a post here" %><hr><br>
+  <%= f.select :flight, @flights %><br>
+  <%= f.text_area :text, placeholder: "Write a post here" %><br>
   
-  Were you satisfied? <%= f.select :satisfied, [['Yes',true],['No',false]] %><hr><br>
+  <%= label_tag(:satisfied, "Were you satisfied?") %>
+  <%= f.select :satisfied, [['Yes',true],['No',false]] %><br>
   
   <%= f.submit "Flit It!" %> 
   

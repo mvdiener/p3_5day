@@ -9,10 +9,9 @@ $(document).ready(function(){
 			type: "POST",
 			url: '/flight_api',
 			data: data,
-			dataType: 'json',
 			success: function(data){
-				for(i = 0; i < data.length; i++)
-				$('#flight_api_form').after("<p>" + data + "</p>");
+				$('#post-form').append(data);
+				$('#query-form').text('')
 			}
 		});
 	});

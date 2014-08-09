@@ -5,7 +5,13 @@ class Flight < ActiveRecord::Base
 	belongs_to :arrival_airport, class_name: 'Airport'
 	has_many :posts
 
-	validates :airline, :departure_scheduled, :departure_actual, :arrival_scheduled, :arrival_actual, :departure_airport, :arrival_airport, presence: true
+	validates :airline, presence: true
+	validates :departure_scheduled, presence: true
+	validates :departure_actual, presence: true
+	validates :arrival_scheduled, presence: true
+	validates :arrival_actual, presence: true
+	validates :departure_airport, presence: true
+	validates :arrival_airport, presence: true
 
 	validate :depart_cant_be_arrival
 
