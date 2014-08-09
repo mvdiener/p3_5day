@@ -17,7 +17,7 @@
 		<ul>
 			<li>Departed: <%= post.flight.departure_airport.name %> (<%= post.flight.departure_airport.fs_code %>)
 			<li>Arrived: <%= post.flight.arrival_airport.name %> (<%= post.flight.arrival_airport.fs_code %>)
-			<li><%= post.flight.airline.name %>	Flight <%= post.flight.flight_number %>
+			<li><%= link_to "#{post.flight.airline.name} Flight #{post.flight.flight_number}", "flights/#{post.flight.id}" %>
 		</ul>
 	</li>
 
