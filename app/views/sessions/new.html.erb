@@ -4,9 +4,37 @@
 
   <%= form_for(:session, url: sessions_path, method: 'POST') do |f| %>
 
-    <%= f.label :email %>
-    <%= f.text_field :email %>
-    <%= f.label :password %>
-    <%= f.password_field :password %>
-    <%= f.submit "Sign in" %>
+		<form>
+			<div class="row">
+				<div class="small-8">
+					<div class="small-3 columns">
+			    	<label for="right-label" class="right"><%= f.label :email %> </label>
+			   	</div>
+			   	<div class="small-9 columns">
+			   		<%= f.text_field :email %>
+			   	</div>
+			  </div>
+		  </div>
+	  </form>
+
+
+		<form>
+			<div class="row">
+				<div class="small-8">
+					<div class="small-3 columns">
+			    	<label for="right-label" class="right"><%= f.label :password %> </label>
+			   	</div>
+			   	<div class="small-9 columns">
+			   		<%= f.password_field :password %>
+			   	</div>
+			  </div>
+		  </div>
+	  </form>
+
+		<div class="row collapse">
+			<div class="small-9 small-offset-3 columns">
+	    	<%= f.submit "Sign in", class: 'button' %>
+	    </div>
+	  </div>
+
   <% end %>
