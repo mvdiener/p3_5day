@@ -23,6 +23,10 @@ class UsersController < ApplicationController
 		end
 	end
 
+	def posts
+		@posts = Post.find_by(@user.id)
+	end
+
 	private
 
 	   def user_params

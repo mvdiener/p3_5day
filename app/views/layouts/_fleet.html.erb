@@ -1,13 +1,12 @@
 <% posts.each do |post| %>
-<ul>
-	<li>
-		<%=post.text%>
-		<ul>
-			<li>Departed: <%= post.flight.departure_airport.name %> (<%= post.flight.departure_airport.fs_code %>)
-			<li>Arrived: <%= post.flight.arrival_airport.name %> (<%= post.flight.arrival_airport.fs_code %>)
-			<li><%= link_to "#{post.flight.airline.name} Flight #{post.flight.flight_number}", "flights/#{post.flight.id}" %>
-		</ul>
-	</li>
 
-</ul>
+<div class = "fleet">
+	<ul>
+		<li><%= link_to "#{post.user.username}", posts_path %></li>
+		<li> <%= link_to "#{post.flight.airline.name} Flight #{post.flight.flight_number}", flight_path(post.flight.id) %></li>
+		<li><%=post.text%></li>
+
+	</ul>
+</div>
 <% end %>
+
