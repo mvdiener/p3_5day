@@ -7,7 +7,7 @@ $(document).ready(function(){
 
 		$.ajax({
 			type: "POST",
-			url: '/flight_api',
+			url: '/flights',
 			data: data,
 			success: function(data){
 				$('#post-form').append(data);
