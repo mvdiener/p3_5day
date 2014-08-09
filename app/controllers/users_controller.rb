@@ -23,14 +23,9 @@ class UsersController < ApplicationController
 		end
 	end
 
-<<<<<<< HEAD
-	def posts
-		@posts = Post.find_by(@user.id)
-=======
 	def show
 		user = User.find(current_user.id)
 		@posts = user.posts.reverse
->>>>>>> 9f3df0a41a7c409257fa321fe45481a36dd9e6b5
 	end
 
 	private
