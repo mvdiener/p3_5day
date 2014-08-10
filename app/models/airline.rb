@@ -12,13 +12,14 @@ class Airline < ActiveRecord::Base
 	end
 
 	def parse_flights
-		self.flights.map do |flight|
+		parsed_flights = self.flights.map do |flight|
 			{
-				"flight" => flight.flight_number,
+				"flight" => "FS Code " + flight.fs_code.to_s,
 				"arrivalDifference" => arrival_difference(flight),
 				"departureDifference" => departure_difference(flight)
 			}
 		end
+		parsed_flights.to_json
 	end
 
 	def difference_to_s(time)
@@ -26,11 +27,11 @@ class Airline < ActiveRecord::Base
 	end
 
 	def arrival_difference(flight)
-		difference_to_s(flight.arrival_actual - flight.arrival_scheduled)
+		difference_to_s(flight.arrival_scheduled - flight.arrival_actual)
 	end
 
 	def departure_difference(flight)
-		difference_to_s(flight.departure_actual - flight.departure_scheduled)
+		difference_to_s(flight.departure_scheduled - flight.departure_actual)
 	end
 
 end
