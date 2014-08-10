@@ -1,8 +1,34 @@
-<h1><%= link_to "#{@flight.airline.name}", airline_path(@flight.airline.id) %><%=' Flight ' + @flight.flight_number %></h1>
-<ul>
-  <li><%= @flight.departure_airport.name %> (<%= @flight.departure_airport.fs_code %>) to <%= @flight.arrival_airport.name %> (<%= @flight.arrival_airport.fs_code %>)
-  	<li><%= @flight.satisfied_percent %>% satisfaction with this flight
-		<li>Departed: <%= @flight.time_to_s(@flight.departure_actual) %> - <%= @flight.departure_difference %>
-		<li>Arrived: <%= @flight.time_to_s(@flight.arrival_actual) %> - <%= @flight.arrival_difference %>
-</ul>
+<div class="small-10 columns small-centered">
+  <div class="row">
+    <h1><%= link_to "#{@flight.airline.name}", airline_path(@flight.airline.id) %><%=' Flight ' + @flight.flight_number %></h1>
+    <h4><%= @flight.departure_airport.name %> (<%= @flight.departure_airport.fs_code %>) to <%= @flight.arrival_airport.name %> (<%= @flight.arrival_airport.fs_code %>)</h4>
+    <div class="small-10 columns">
+      <div class="row">
+        <div class="small-1 columns text-right">
+          <i class="fi-dislike"></i>
+        </div>
+        <div class="small-10 columns">
+          <div class="progress small-12">
+            <span class="meter text-center" style="width: <%= @flight.satisfied_percent %>%"></span>
+          </div>
+        </div>
+        <div class="small-1 columns">
+          <i class="fi-like"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="small-12 columns">Departed <%= @flight.time_to_s(@flight.departure_actual) %></div>
+    </div>
+    <div class="row">
+      <div class="small-12 columns">Arrived <%= @flight.time_to_s(@flight.arrival_actual) %></div>
+    </div>
+    <div class="row">
+      <div class="small-12 columns"><%= @flight.arrival_difference %></div>
+    </div>
+    <hr>
+  </div>
+</div>
+
 <%= render partial: 'layouts/fleet', locals: {posts: @posts} %>
