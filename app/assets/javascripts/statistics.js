@@ -100,15 +100,19 @@ var dataset;
 							    .style("opacity", 1)
 							    .style("left", (d3.event.pageX+10) + "px")
 							    .style("top", (d3.event.pageY-30) + "px")
-							    .text(d.flight);
+							    .text("Flight " + d.flight_number);
 
-					if(state[0][0].selected){
-						info.append("p")
+					if(state[0][0].selected){						
+						info.append("li")
+							    .text("Arrived " + d.arrivalActual);
+						info.append("li")
 							    .text(formatTime(d.arrivalDifference));
 
 					}
 					else if(state[0][1].selected){
-						info.append("p")
+						info.append("li")
+							    .text("Departed " + d.departureActual);
+						info.append("li")
 							    .text(formatTime(d.departureDifference));
 					}
 
