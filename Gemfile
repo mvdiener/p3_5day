@@ -32,6 +32,9 @@ gem 'bcrypt', '~> 3.1.7'
 # foundation for rails
 gem 'foundation-rails' 
 
+# d3 for rails
+gem 'd3-rails'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 
