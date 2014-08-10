@@ -1,14 +1,7 @@
 <h1><%= @airline.name %></h1>
 <%= render partial: 'layouts/statistics' %>
-<p>Flights for this airline:</p>
-<ul>
-	<% @airline.flights.each do |flight| %>
-		<li>
-			<span>Flight <%= flight.flight_number %></span><br>
-			<span><%= flight.departure_airport.fs_code %> to <%= flight.arrival_airport.fs_code %></span><br>
-			<span>Arrived at <%= flight.time_to_s(flight.arrival_actual) %></span>
-		</li><br>
-	<% end %>
-</ul>
+<div id="hidden_flights" style="display: none">
+	<%= @flights %>
+</div>
 
 

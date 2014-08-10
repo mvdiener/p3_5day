@@ -1,3 +1,8 @@
+function parseData(){
+	return JSON.parse($("#hidden_flights").text());
+};
+
+
 var dataset;
 
 //Define bar chart function 
@@ -6,7 +11,7 @@ var dataset;
 		//Set width and height as fixed variables
 		var w = 520;
 		var h = 500;
-		var padding = 25;
+		var padding = 30;
 
 		//Scale function for axes and radius
 		var yScale = d3.scale.linear()
@@ -15,10 +20,10 @@ var dataset;
 
 		var xScale = d3.scale.ordinal()
 						.domain(dataset.map(function(d){ return d.flight;}))
-						.rangeRoundBands([padding,h+padding],.5);
+						.rangeRoundBands([padding,h+padding],.3);
 
 		//To format axis as a percent
-		var formatAxis = d3.format("1");
+		var formatAxis = d3.format("d");
 
 		//To add proper text to hover box
 		var formatTime = function(time){
@@ -223,34 +228,8 @@ var dataset;
 			});
 		
 	};
-
-var busCsv = [
-	{"flight": "flight 1", "arrivalDifference": "0.02", "departureDifference": "-0.3"},
-	{"flight": "flight 2", "arrivalDifference": "-0.03", "departureDifference": "-0.04"},
-	{"flight": "flight 3", "arrivalDifference": "-0.03", "departureDifference": "-0.04"},
-	{"flight": "flight 4", "arrivalDifference": "0.01", "departureDifference": "0.04"},
-	{"flight": "flight 5", "arrivalDifference": "-0.03", "departureDifference": "-0.01"},
-	{"flight": "flight 6", "arrivalDifference": "-0.05", "departureDifference": "-0.04"},
-	{"flight": "flight 7", "arrivalDifference": "-0.01", "departureDifference": "0.03"},
-	{"flight": "flight 8", "arrivalDifference": "0.03", "departureDifference": "-0.04"},
-	{"flight": "flight 9", "arrivalDifference": "-0.07", "departureDifference": "-0.06"},
-	{"flight": "flight 10", "arrivalDifference": "0.05", "departureDifference": "0.01"},
-	{"flight": "flight 41", "arrivalDifference": "0.01", "departureDifference": "0.04"},
-	{"flight": "flight 51", "arrivalDifference": "-0.03", "departureDifference": "-0.01"},
-	{"flight": "flight 61", "arrivalDifference": "-0.05", "departureDifference": "-0.04"},
-	{"flight": "flight 71", "arrivalDifference": "-0.01", "departureDifference": "0.03"},
-	{"flight": "flight 81", "arrivalDifference": "0.03", "departureDifference": "-0.04"},
-	{"flight": "flight 91", "arrivalDifference": "-0.07", "departureDifference": "-0.06"},
-	{"flight": "flight 102", "arrivalDifference": "0.05", "departureDifference": "0.01"},
-	{"flight": "flight 42", "arrivalDifference": "0.01", "departureDifference": "0.04"},
-	{"flight": "flight 52", "arrivalDifference": "-0.03", "departureDifference": "-0.01"},
-	{"flight": "flight 62", "arrivalDifference": "-0.05", "departureDifference": "-0.04"},
-	{"flight": "flight 72", "arrivalDifference": "-0.01", "departureDifference": "0.03"},
-	{"flight": "flight 82", "arrivalDifference": "0.03", "departureDifference": "-0.04"},
-	{"flight": "flight 92", "arrivalDifference": "-0.07", "departureDifference": "-0.06"},
-	{"flight": "flight 130", "arrivalDifference": "0.05", "departureDifference": "0.01"}
-]
-
+ 
+var flightData = parseData();
 
 	//Load data and call bar chart function 
 		// d3.csv("javascripts/transportation_change_2012-2013_small.csv", function(error,data){
@@ -258,22 +237,11 @@ var busCsv = [
 		// 			console.log(error);
 		// 		}
 		// 		else{
-						busCsv.forEach(function(d) {
+						flightData.forEach(function(d) {
 							d.arrivalDifference = parseFloat(d.arrivalDifference);
 							d.departureDifference = parseFloat(d.departureDifference);
 						});
-						dataset=busCsv;
+						dataset=flightData;
 						barChart(dataset);
 			// 	}
 			// });
-
-// var data = [{
-// 	"flight": 'Flight 100',
-// 	"departureScheduled": '11am',
-// 	"departureActual": '11:10am',
-// 	"departureChange": "-10",
-// 	"arrivalScheduled": '1pm',
-// 	"arrivalActual": '1:05pm',
-// 	"arrivalChange": "-5",
-// 	"satisfied": "50",
-// }]
