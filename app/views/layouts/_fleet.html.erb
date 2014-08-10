@@ -1,14 +1,23 @@
-<% posts.each do |post| %>
+<% posts.each_slice(3) do |posts| %>
 
-<div class = "fleet">
-		
-	User: <%= link_to "#{post.user.username}", user_path(post.user.id) %>
-	Flight: <%= link_to "#{post.flight.airline.name} Flight #{post.flight.flight_number}", flight_path(post.flight.id) %>
-	<%=post.text%>
-		
+<div class="small-10 columns small-centered">
+  <div class="row">
+    <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3">
+      <% posts.each do |post| %>
+        <li><div class="panel fleet">
+        	<%= link_to "#{post.user.username}", user_path(post.user.id) %>
+          <% if post.satisfied %>
+            <i class="fi-like"></i>
+          <% else %>
+            <i class="fi-dislike"></i>
+          <% end %><br>
+        	<%=post.text%><br>
+          <%= link_to "#{post.flight.airline.name} Flight #{post.flight.flight_number}", flight_path(post.flight.id) %>
+        </div></li>
+      <% end %>
+    </ul>
+  </div>
 </div>
-
-
 
 <% end %>
 
