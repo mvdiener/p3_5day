@@ -1,4 +1,4 @@
-<h1><%= @flight.airline.name + ' Flight ' + @flight.flight_number %></h1>
+<h1><%= link_to "#{@flight.airline.name}", airline_path(@flight.airline.id) %><%=' Flight ' + @flight.flight_number %></h1>
 <ul>
   <li><%= @flight.departure_airport.name %> (<%= @flight.departure_airport.fs_code %>) to <%= @flight.arrival_airport.name %> (<%= @flight.arrival_airport.fs_code %>)
   	<li><%= @flight.satisfied_percent %>% satisfaction with this flight
