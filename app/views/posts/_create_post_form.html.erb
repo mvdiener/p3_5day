@@ -1,22 +1,15 @@
-<%= form_for @post, url: posts_path do |f| %>
-  
-  <%= f.select :flight, @flights %><br>
-  <%= f.text_area :text, placeholder: "Write a post here" %><br>
-  
-  <%= label_tag(:satisfied, "Satisfied?") %>
-
-
-
-  <label>
-  	<input type = "radio" name = "satisfied" value = true>
-  	<img src="/assets/thumbs-up.png">
-  </label>
-
-  <label>
-  	<input type = "radio" name = "satisfied" value = false>
-  	<img src="/assets/thumbs-down.png">
-  </label>
-  
-  <%= f.submit "Flit It!" %> 
-
-<% end %>
+<div class="small-10 columns small-centered">
+  <div class="row signup">
+    <%= form_for @post, url: posts_path do |f| %>
+      
+      <%= f.select :flight, @flights %><br>
+      <%= f.text_area :text, placeholder: "Write a post here" %><br>
+      
+      <%= label_tag(:satisfied, "Were you satisfied?") %>
+      <%= f.select :satisfied, [['Yes',true],['No',false]] %><br>
+      
+      <%= f.submit "Flit It!", class: 'button'%> 
+      
+    <% end %>
+  </div>
+</div>
