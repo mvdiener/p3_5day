@@ -1,13 +1,15 @@
-<h1> Homepage to Flitter </h1>
-<h3> This is a subtitle </h3>
+<center>
+	<h1> Homepage to Flitter </h1>
+	<h3> This is a subtitle </h3>
 
-<% if @current_user %>
-	<div id="post-form">
-	</div>
+	<% if @current_user %>
+		<div id="post-form">
+		</div>
 
-	<div id="query-form">
-		<%= render partial: 'flight_query_form' %>
-	</div>
-<% end %>
+		<div id="query-form">
+			<%= render partial: 'flight_query_form' %>
+		</div>
+	<% end %>
 
-<%= render partial: 'layouts/fleet', locals: {posts: @posts} %>
+	<%= render partial: 'layouts/fleet', locals: {posts: @posts} %>
+</center>

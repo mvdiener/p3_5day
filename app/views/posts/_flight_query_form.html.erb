@@ -1,14 +1,44 @@
 <%= form_tag flights_path, id: "flight_api_form" do %>
+
+	<div class="row">
+		<div class="small-9">
+			<div class="small-4 columns">
+	    	<label for="right-label" class="right"><%= label_tag (:departing), "Enter your departing airport:" %></label>
+	   	</div>
+	   	<div class="small-8 columns">
+	   		<span ><%= text_field_tag (:departing) %></span>
+	   	</div>
+	  </div>
+  </div>
+
+	<div class="row">
+		<div class="small-9">
+			<div class="small-4 columns">
+	    	<label for="right-label" class="right"><%= label_tag (:arriving), "Enter your arriving airport:" %></label>
+	   	</div>
+	   	<div class="small-8 columns">
+	   		<span ><%= text_field_tag (:arriving) %></span>
+	   	</div>
+	  </div>
+  </div>
   
-  <%= label_tag (:departing), "Enter your departing airport:" %>
-  <%= text_field_tag (:departing) %><br>
+	<div class="row">
+		<div class="small-9">
+			<div class="small-4 columns">
+	    	<label for="right-label" class="right"><%= label_tag (:arriving), "Choose your Date:" %></label>
+	   	</div>
+	   	<div class="small-8 columns">
+	   		<span ><%= date_field_tag (:date) %></span>
+	   	</div>
+	  </div>
+  </div>  
+ 
+	<div class="row collapse">
+		<div class="small-8 small-offset-2 columns">
+			<%= submit_tag "Flind It!", class: 'button' %>
+    </div>
+  </div> 
   
-  <%= label_tag (:arriving), "Enter your arriving airport:" %>
-  <%= text_field_tag (:arriving) %><br>
-  
-  <%= date_field_tag (:date) %><br>
-  
-  <%= submit_tag "Flind It!" %> 
   
 <% end %>
 

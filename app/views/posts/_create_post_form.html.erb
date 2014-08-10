@@ -1,7 +1,28 @@
 <%= form_for @post, url: posts_path do |f| %>
+
+  <div class="row">
+    <div class="small-9">
+      <div class="small-4 columns">
+        <label for="right-label" class="right"><%= "Pick Your Flight:" %></label>
+      </div>
+      <div class="small-8 columns">
+        <span ><%= f.select :flight, @flights %></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-9">
+      <div class="small-4 columns">
+        <label for="right-label" class="right"><%= "Post" %></label>
+      </div>
+      <div class="small-8 columns">
+        <span ><%= f.text_area :text, placeholder: "Write a post here" %></span>
+      </div>
+    </div>
+  </div>  
   
-  <%= f.select :flight, @flights %><br>
-  <%= f.text_area :text, placeholder: "Write a post here" %><br>
+
   
   <%= label_tag(:satisfied, "Satisfied?") %>
 
@@ -9,14 +30,14 @@
 
   <label>
   	<input type = "radio" name = "satisfied" value = true>
-  	<img src="/assets/thumbs-up.png">
+  	<img width="50" height="85" src="/assets/thumbs-up.png">
   </label>
 
   <label>
   	<input type = "radio" name = "satisfied" value = false>
-  	<img src="/assets/thumbs-down.png">
+  	<img width="50" height="85" src="/assets/thumbs-down.png">
   </label>
   
-  <%= f.submit "Flit It!" %> 
+  <%= f.submit "Flit It!", class: 'button' %> 
 
 <% end %>
