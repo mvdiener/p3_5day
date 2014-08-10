@@ -1,13 +1,24 @@
 <div class="small-10 columns small-centered">
   <div class="row signup">
+    
     <%= form_for @post, url: posts_path do |f| %>
       
       <%= f.select :flight, @flights %><br>
       <%= f.text_area :text, placeholder: "Write a post here", maxlength: '140', rows: '3' %><br>
       
       <%= label_tag(:satisfied, "Were you satisfied?") %>
+
+	  	<input id = "satisfied" type = "radio" name = "post[satisfied]" value = true>
+		    <label for = "satisfied">
+		  		<img src="/assets/thumbs-up.png">
+		  	</label>
+
+	  	<input id = "not_satisfied" type = "radio" name = "post[satisfied]" value = false>
+		  	<label for = "not_satisfied">
+		  		<img src="/assets/thumbs-down.png">
+		  	</label>
       
-      
+     
       <%= f.submit "Flit It!", class: 'button'%> 
       
     <% end %>
