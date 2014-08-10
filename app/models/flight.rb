@@ -39,7 +39,7 @@ class Flight < ActiveRecord::Base
 	def satisfied_percent
 		total = self.posts.count
 		satisfied = self.posts.select{|post| post.satisfied}
-		satisfied.length/total.to_f * 100
+		(satisfied.length/total.to_f * 100).to_i
 	end
 
 	def arrival_difference
