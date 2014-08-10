@@ -51,3 +51,4 @@ group :development, :test do
   gem 'ffaker'
 end
 
+gem 'foundation-icons-sass-rails'
