@@ -1,14 +1,17 @@
-<%= form_tag flights_path, id: "flight_api_form" do %>
-  
-  <%= label_tag (:departing), "Enter your departing airport:" %>
-  <%= text_field_tag (:departing) %><br>
-  
-  <%= label_tag (:arriving), "Enter your arriving airport:" %>
-  <%= text_field_tag (:arriving) %><br>
-  
-  <%= date_field_tag (:date) %><br>
-  
-  <%= submit_tag "Flind It!" %> 
-  
-<% end %>
-
+<div class="small-10 columns small-centered">
+  <div class="row signup">
+    <%= form_tag flights_path, id: "flight_api_form" do %>
+      
+      <%= label_tag (:departing), "Enter your departing airport:" %>
+      <%= text_field_tag (:departing) %><br>
+      
+      <%= label_tag (:arriving), "Enter your arriving airport:" %>
+      <%= text_field_tag (:arriving) %><br>
+      
+      <%= date_field_tag (:date) %><br>
+      
+      <%= submit_tag "Flind It!", class: 'button' %> 
+      
+    <% end %>
+  </div>
+</div>
