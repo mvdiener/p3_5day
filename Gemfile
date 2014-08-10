@@ -35,6 +35,9 @@ gem 'foundation-rails'
 # d3 for rails
 gem 'd3-rails'
 
+# heroku asset pipeline
+gem 'rails_12factor', group: :production
+
 # Use unicorn as the app server
 # gem 'unicorn'
 
