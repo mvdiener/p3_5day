@@ -1,5 +1,6 @@
 class Airline < ActiveRecord::Base
 	has_many :flights
+	has_many :posts, through: :flights
 
 	validates :name, presence: true
 
@@ -39,6 +40,12 @@ class Airline < ActiveRecord::Base
 
 	def time_to_s(time)
 		time.strftime("%I:%M %p")
+	end
+
+	def satisfied_percent
+		total = self.posts.count
+		satisfied = self.posts.select{|post| post.satisfied}
+		(satisfied.length/total.to_f * 100).to_i
 	end
 
 end
