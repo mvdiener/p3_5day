@@ -1,4 +1,19 @@
 <h1><%= @airline.name %></h1>
+<div class="small-10 columns">
+  <div class="row">
+    <div class="small-1 columns text-right">
+      <i class="fi-dislike"></i>
+    </div>
+    <div class="small-10 columns">
+      <div class="progress small-12">
+        <span class="meter text-center" style="width: <%= @airline.satisfied_percent %>%"></span>
+      </div>
+    </div>
+    <div class="small-1 columns">
+      <i class="fi-like"></i>
+    </div>
+  </div>
+</div>
 <%= render partial: 'layouts/statistics' %>
 <div id="hidden_flights" style="display: none">
 	<%= @flights %>
